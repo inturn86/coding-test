@@ -16,17 +16,21 @@ public class CodingTestBFS {
 	static int[] departXArr = {1, 0, -1, 0};
 	static int[] departYArr = {0, 1, 0, -1};
 
+	//mapì˜ ê¸¸ì°¾ê¸°
+	//mapì€ 1ì´ë©´ ê°ˆìˆ˜ìˆëŠ”ê²ƒ 0ì´ë©´ ëª»ê°.
+	//userëŠ” 1,1ì—ì„œ ì¶œë°œ
+	//ëª©ì ì§€ëŠ” 5,5
 	public static int solutions(int[][] maps) {
 		int answer = 0;
 
-		//ë°©ë¬¸?•œ ê¸°ë¡ arr
+		//ë°©ë¬¸ ê¸°ë¡ arr
 		int[][] visited = new int[maps.length][maps[0].length];
 		visited[0][0] = 1;
 
 		//bfsì²˜ë¦¬
 		bfs(maps, visited);
 
-		//ìµœì¢… ?„?‹¬ ?œ„ì¹˜ì˜ ?°?´?„° get
+		//ìµœì¢… ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ì¹˜ì˜ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ get
 		answer = visited[maps.length -1 ][maps[0].length - 1];
 		if(answer == 0) {
 			answer = -1;
@@ -37,38 +41,36 @@ public class CodingTestBFS {
 
 	public static void bfs(int[][] maps, int[][] visited){
 
-		//?˜„?¬ ?œ„ì¹?
+		//?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 		Queue<int[]> que = new LinkedList<int[]>();
 
 		que.add(new int[] {0, 0});
 
 		while(!que.isEmpty()) {
-			//?˜„?¬ ?œ„ì¹˜ë?? get
+			//í˜„ì¬ì˜ ìœ„ì¹˜
 			int[] now = que.poll();
 
 
 			int currentX = now[0];
 			int currentY = now[1];
-			//maps?˜ ?œ„ì¹˜ë?? 0?œ¼ë¡? ê°?ì§? ëª»í•˜ê²? set
+			//í˜„ì¬ ë§µì„ ì§€ë‚˜ì˜¨ ê¸¸ë¡œ 0ìœ¼ë¡œ í‘œê¸°
 			maps[currentX][currentY] = 0;
 
 			for(int i = 0, len = departXArr.length; i < len; i++) {
-				//ëª©í‘œ ?œ„ì¹˜ë?? get
+				//ëª©í‘œìœ„ì¹˜ get
 				int departX = departXArr[i];
 				int departY = departYArr[i];
-				//?˜„?¬?œ„ì¹˜ì? ëª©í‘œ?œ„ì¹˜ë?? ?”?•˜?—¬
+				//ì‚¬ë°©ìœ¼ë¡œ ê³„ì‚°í•˜ì—¬ ë‹¤ìŒ ëª©í‘œìœ„ì¹˜ ì„ ì •
 				departX = currentX + departX;
 				departY = currentY + departY;
 
-				//ê°ˆìˆ˜ ?ˆ?Š” ?œ„ì¹˜ì¸ì§? ?™•?¸.
-				//ê°ˆìˆ˜?—†?„ ê²½ìš° que?— ? ?¬?˜ì§? ?•Šê¸°ì—
+				//ë§µì„ ë„˜ì–´ê°€ëŠ”ì§€ 0ë°‘ìœ¼ë¡œ ë„˜ì–´ê°€ëŠ”ì§€ í™•ì¸í•˜ì—¬ ë§ì„ ê²½ìš° íŒ¨ìŠ¤
 				if(departX < 0 || departY < 0 || departX > maps.length - 1 || departY > maps[0].length -1) {
 					continue;
 				}
 
-				//?•´?‹¹ ?œ„ì¹˜ê? ê°ˆìˆ˜?ˆ?œ¼ë©?
-				//ë°©ë¬¸ ê¸°ë¡?„ ?˜„?¬?œ„ì¹˜ì—?„œ +1
-				//?˜„?¬ ?œ„ì¹˜ë?? que?— ê¸°ë¡
+				//ê°ˆìˆ˜ìˆëŠ” ê³³ì´ë¼ë©´ í˜„ì¬ì˜ ìœ„ì¹˜ë¥¼ 0ìœ¼ë¡œ ë§Œë“¤ê³  ë°©ë¬¸ê¸°ë¡ì— í˜„ì¬ì˜ ìœ„ì¹˜ + 1ì„í•˜ì—¬ ëˆ„ì 
+				//ëª©í‘œì¹˜ë¥¼ queueì— ìŒ“ëŠ”ë‹¤.
 				if(maps[departX][departY] == 1) {
 					maps[departX][departY] = 0;
 					visited[departX][departY] = visited[currentX][currentY] + 1;

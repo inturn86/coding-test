@@ -11,7 +11,12 @@ public class CodingTestDeposit {
 		solutions(budgets, 485);
 	}
 
-	//맥스 �?.
+	//이분 탐색.
+	//M은 예산, budgets은 예산을 요청한 목록
+	//1. 모든 요청이 배정될 수 있는 경우에는 요청한 금액을 그대로 배정합니다.
+	//2. 모든 요청이 배정될 수 없는 경우에는 특정한 정수 상한액을 계산하여 그 이상인 예산요청에는 모두 상한액을 배정합니다.
+	//   상한액 이하의 예산요청에 대해서는 요청한 금액을 그대로 배정합니다.
+	//
 	public static int solutions(int[] budgets, int M) {
 
 		int min = 0;

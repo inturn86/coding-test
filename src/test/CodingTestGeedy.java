@@ -8,15 +8,15 @@ public class CodingTestGeedy {
 		solution2(16, stations, 2);
 	}
 
-	//ê¸°ì?êµ? ? „?ŒŒ greedy
+	//ê¸°ì§€êµ­ ì„¤ì¹˜ greedy
 	public static int solutions(int n, int[] stations, int w) {
 		int answer = 0;
 		int pos = 1;
 		int idx = 0;
 
-		//while?? ?´ ì¡°ê±´?´ true?¼?•Œ ê¹Œì? ?ˆ?‹¤.
+		//posì´ ìµœëŒ€ì™€ ê°™ê±°ë‚˜ í´ê²½ìš° break;
 		while (pos <= n) {
-			//station?˜ ê¸¸ì´ë¥? ì²´í¬
+			//stationì˜ ìµœëŒ€ ê¸¸ì´ë¥¼ ì²´í¬.
 			if(stations.length != idx && pos >= stations[idx] - w) {
 				pos = stations[idx] + w + 1;
 				idx ++;
@@ -42,7 +42,7 @@ public class CodingTestGeedy {
 		int count = 0;
 		for(int pos = 1; pos <= n;) {
 
-			//?‹¤?Œ?˜ station min?„ êµ¬í•´?„œ ?•´?‹¹ ê°’ì? -?•˜?—¬
+			//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ station min?ï¿½ï¿½ êµ¬í•´?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ê°’ï¿½? -?ï¿½ï¿½?ï¿½ï¿½
 			if(idx < stationSize && pos >= stations[idx] - w) {
 				pos = stations[idx] + w + 1;
 				idx ++;
