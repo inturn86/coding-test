@@ -11,7 +11,6 @@ public class CodingTestLevel2 {
 	}
 
 
-	//하노이의 탑 왼쪽기준으로 오르쪽으로 옮기는 작업의 가지수.
     public static String solutions(int[] numbers) {
     	String answer = "";
 
