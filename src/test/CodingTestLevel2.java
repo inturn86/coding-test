@@ -3,23 +3,17 @@ package test;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class CodingTestMaxValue {
+public class CodingTestLevel2 {
 
 	public static void main(String[] args) {
 
-		System.out.println("303".compareTo("330"));
-		System.out.println("330".compareTo("303"));
-		System.out.println("3".compareTo("30"));
-		System.out.println("30".compareTo("3"));
-		int[] num = {30, 3};
-		solution(num);
-
+		solutions(new int[] {1,2,5});
 	}
 
-	//�??�� ?��?�� ?��?��.
-	public static String solution(int[] numbers) {
 
-		String answer = "";
+	//하노이의 탑 왼쪽기준으로 오르쪽으로 옮기는 작업의 가지수.
+    public static String solutions(int[] numbers) {
+    	String answer = "";
 
     	String[] strNum = new String[numbers.length];
     	for(int i = 0, len = numbers.length; i < len; i++) {
@@ -45,5 +39,6 @@ public class CodingTestMaxValue {
     	for(String s : strNum) answer+=s;
 
     	return answer;
-	}
+    }
+
 }
