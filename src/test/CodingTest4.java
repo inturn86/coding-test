@@ -45,8 +45,7 @@ public class CodingTest4 {
 		for(int i=idx; i<N; i++) {
 
 			ans[depth] = numArr[i];
-			System.out.println("index = " + (i+1));
-			System.out.println("depth = " + (depth+1));
+			
 			DFS(i+1, depth + 1);
 		}
 	} // End of DFS
