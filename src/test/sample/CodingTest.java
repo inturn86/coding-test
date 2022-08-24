@@ -1,6 +1,6 @@
 package test.sample;
 
-public class Sample {
+public class CodingTest {
 
 	public static void main(String[] args) {
 		int i = 0;
