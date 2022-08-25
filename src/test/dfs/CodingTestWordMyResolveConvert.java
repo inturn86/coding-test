@@ -3,13 +3,13 @@ package test.dfs;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CodingTestWordResolveConvert {
+public class CodingTestWordMyResolveConvert {
 
 	public static void main(String[] args) {
 
 
-//		solution("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log", "cog"});
-		solution("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log"});
+		solution("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log", "cog"});
+//		solution("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log"});
 	}
 
 //	두 개의 단어 begin, target과 단어의 집합 words가 있습니다.
@@ -24,26 +24,54 @@ public class CodingTestWordResolveConvert {
 //	변환할 수 없는 경우에는 0를 return 합니다.
 
 	static class Node {
-        String[] next;
+        String next;
         int edge;
 
-        public Node(String[] next, int edge) {
+        public Node(String next, int edge) {
             this.next = next;
             this.edge = edge;
         }
     }
 
 	static Queue<Node> que = new LinkedList<>();
-	static int result = 0;
 	public static int solution(String begin, String target, String[] words) {
 
+		int cnt = 0;
 		boolean[] visit = new boolean[words.length];
 
+		Node nod = new Node(begin, 0);
+		que.add(nod);
+
+		while(!que.isEmpty()) {
 
 
-		return result;
+			Node now = que.poll();
+			if(now.next.equals(target)) {
+				cnt = now.edge;
+				break;
+			}
+			//반복문 시작
+			for(int i = 0, len = words.length; i < len; i++) {
+				//방문한적이 없어야함.
+				if(!visit[i]) {
+					int notMatch = 0;
+					for(int j = 0, jlen = words[i].length(); j < jlen; j++) {
+						if(now.next.charAt(j) != words[i].charAt(j)) {
+							if(notMatch++ > 1) {
+								break;
+							};
+						}
+					}
+					if(notMatch <= 1) {
+						que.add(new Node(words[i], now.edge + 1));
+						visit[i] = true;
+					}
+				}
+			}
+		}
+
+		return cnt;
 	}
-
 
 
 }
