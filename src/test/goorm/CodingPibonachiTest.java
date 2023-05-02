@@ -27,9 +27,10 @@ public class CodingPibonachiTest {
 		memo = new int[Integer.valueOf(input) + 1];
 		// System.out.println(solution(Integer.valueOf(input)));
 		int n = Integer.valueOf(input);
+
+		memo[0] = 0;
+		memo[1] = 1;
 		if(n>0){
-			memo[0] = 0;
-			memo[1] = 1;
 			for(int i=2;i<n;i++){
 				memo[i] = ( memo[i-1] + memo[i-2] ) % 1000000007;
 			}
